@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import Logo from '../assets/logo.png';
 import { House } from 'lucide-react';
 import { Triangle } from 'lucide-react';
@@ -25,7 +25,7 @@ const Navbar = () => {
       <li><NavLink to="/installation">Installation</NavLink></li>
       </ul>
     </div>
-    <a className=" text-2xl flex font-bold text-purple-600 gap-1"> <img src={Logo} className='w-10' alt="" /> HERO.IO</a>
+    <Link to="/" className=" text-2xl flex font-bold text-purple-600 gap-1"> <img src={Logo} className='w-10' alt="" /> HERO.IO</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-semibold">
@@ -35,7 +35,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn text-white bg-linear-to-r from-[#632EE3] to-[#9F62F2]"><Github /> Contribute</a>
+    <a href='https://github.com/SabrinaMohsina/assignment8.git' className="btn text-white bg-linear-to-r from-[#632EE3] to-[#9F62F2]"><Github /> Contribute</a>
   </div>
 </div>
 

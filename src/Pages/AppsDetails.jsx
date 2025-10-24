@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import useApps from './Hook/useApps';
 import IconRating from"../assets/icon-ratings.png"
 import IconDownloads from '../assets/icon-downloads.png'
 import IconReviews from '../assets/icon-review.png'
 import {Bar, BarChart, CartesianGrid, Legend, Rectangle, Tooltip, XAxis, YAxis} from "recharts"
+ import { ToastContainer, toast } from 'react-toastify';
 
 const AppsDetails = () => {
     const {id} = useParams()
@@ -12,10 +13,14 @@ const AppsDetails = () => {
     const app = allapps.find(a=> String(a.id)=== id)
 //    console.log(id)
 //     console.log(app);
+  
 if (loading) return <p>loading...</p>
 const {title,image , companyName , description , size , reviews, ratingAvg , downloads , ratings }= app
 
 const handleInstalledApps = ()=>{
+    const total ="Yahoo app installed Successfully";
+      toast(total);
+
     let existingItem =JSON.parse(localStorage.getItem('installed'))
     // console.log(existingItem);
     let updatedList = []
@@ -28,6 +33,8 @@ const handleInstalledApps = ()=>{
     }
 
     localStorage.setItem('installed' , JSON.stringify(updatedList))
+    
+
 } 
     return (
         <div>
@@ -63,7 +70,7 @@ const handleInstalledApps = ()=>{
     {/* chart  */}
     <div className='space-y-3'>
         <h3 className='text-xl'>Ratings</h3>
-        <div className='p-4 h-200'>
+        <div className='p-4 h-100'>
                  <BarChart layout='vertical'  responsive data={ratings}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="count" />
@@ -75,7 +82,11 @@ const handleInstalledApps = ()=>{
     </BarChart>
         </div>
     </div>
- 
+    <div className='py-10'>
+        <h4 className='font-bold text-xl'>Details</h4>
+        <p>{description}</p>
+    </div>
+ <ToastContainer />
         </div>
     );
 };
