@@ -8,6 +8,7 @@ import { FaAppStoreIos } from 'react-icons/fa';
 import image from '../assets/hero.png'
 import {Link} from 'react-router'
 import useApps from './Hook/useApps';
+import LoadingSpinner from '../Components/LoadingSpinner';
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
   return (
    
    <div>
+   
     <div className='flex justify-center items-center flex-col pt-10'>
       <h1 className='text-4xl m-0 mx-auto  font-bold'>We Build <br />  <span className='text-[#632EE3]'>Productive</span>  Apps</h1>
       <p className='text-[#627382]  pt-3 sm:px-3  '>At HERO.IO , we craft innovative apps designed to make everyday life simpler, smarter, and more exciting .<br /> Our goal is to turn your ideas into digital experiences that truly make an impact.</p>
@@ -55,8 +57,8 @@ const Home = () => {
       <p className='text-[#627382]  pt-3 sm:px-3  '>Explore All Trending Apps on the Market developed by us</p>
       </div>
       <div  className='grid grid-cols-1 md:grid-cols-2  pl-12 md:pl-0 lg:grid-cols-4 gap-4  mx-auto'>
-    {
-      allInOneApp?.map(singleApp=>( <AppCard key={singleApp.id} singleApp={singleApp}></AppCard>))
+    { loading? <LoadingSpinner></LoadingSpinner>
+:      allInOneApp?.map(singleApp=>( <AppCard key={singleApp.id} singleApp={singleApp}></AppCard>))
     }
     </div>
 <div className='flex justify-center items-center p-10'>

@@ -11,7 +11,7 @@ const Apps = () => {
   const term = search.trim().toLocaleLowerCase()
   const searchApps = term? allapps.filter(apps => apps.title.toLocaleLowerCase().includes(term)) : allapps
   
-  console.log(searchApps)
+  // console.log(searchApps)
   
     return (
       <div>
